@@ -3,10 +3,14 @@ public class RobotArmy {
 	public static void main(String[] asd){
 		//1. create a new human
 		Human bob = new Human("bob");
+		Human flobby =new Human("flobby");
 		//2. create a new Robot army of good and evil robots.
-		Robot boy = new Robot("boy",false);
+		Robot boy = new Robot("Boy",true);
 		boy.destroy(bob);
-		
+		Robot Jeff = new Robot("jeff",true);
+		Jeff.destroy(bob);
+		Robot gobby = new Robot("globby",false);
+		gobby.destroy(flobby);
 		//3. command your robot army to destroy a human
 	
 	}
