@@ -40,4 +40,9 @@ public class learningtextBOXES implements ActionListener {
 		JPanel boi= new JPanel();
 	});
 	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
