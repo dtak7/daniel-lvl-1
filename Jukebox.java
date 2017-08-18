@@ -23,12 +23,16 @@ public class Jukebox implements Runnable, ActionListener {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Jukebox());
 	}
+	Song bird = new Song("bird.mp3");
 	   Song fruitcake = new Song("fruitcake.mp3");
+	   JButton button = new JButton();
+	   JButton button2 = new JButton(); 
            public void run() {
 
 		// 3. Find an mp3 on your computer or on the Internet.
 		// 4. Create a Song
-        	   Song fruitcake = new Song("fruitcake.mp3");
+        	  
+        	   
 		// 5. Play the Song
         	   
 		/*
@@ -39,9 +43,8 @@ public class Jukebox implements Runnable, ActionListener {
 		 * that was selected.
 		 */
         	   JFrame frame = new JFrame();
-        	   JButton button = new JButton();
         	   button.add(loadImage("ask.jpg"));
-        	   JButton button2 = new JButton(); 
+        	   button2.add(loadImage("bird.jpg"));
         	  JPanel panel = new JPanel();
         	  panel.add(button);
         	  panel.add(button2);
@@ -49,6 +52,7 @@ public class Jukebox implements Runnable, ActionListener {
         	   frame.setVisible(true);
         	   frame.pack();
         	   button.addActionListener(this);
+        	   button2.addActionListener(this);
           }
 	/* Use this method to add album covers to your Panel. */
 	private JLabel loadImage(String fileName) {
@@ -61,8 +65,18 @@ public class Jukebox implements Runnable, ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		fruitcake.stop();
+		
+		bird.stop();
+		if (e.getSource()==button) {
 		fruitcake.play();
+		}
+		else {
+			bird.play();
+		}
+		
+		
 	}
+	
 
 }
 
