@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
@@ -5,23 +6,24 @@ import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class typingtutor implements KeyListener {
-	public static void main(String[] args) {
-		new typingtutor();
-	}
+public class TypingTutor implements KeyListener {
 	char currentLetter = generateRandomLetter();
+    JFrame frame = new JFrame();
+    JLabel label = new JLabel(Character.toString(currentLetter));
+	public static void main(String[] args) {
+		new TypingTutor();
+	}
 
 	char generateRandomLetter() {
 		Random r = new Random();
 		return (char) (r.nextInt(26) + 'a');
 	}
 
-	JLabel label = new JLabel(Character.toString(currentLetter));
+	
 
-	public typingtutor() {
+	public TypingTutor() {
+
 		
-		JFrame frame = new JFrame();
-		frame.add(label);
 		frame.setVisible(true);
 		frame.setSize(700, 600);
 		frame.addKeyListener(this);
@@ -30,16 +32,17 @@ public class typingtutor implements KeyListener {
 		label.setFont(label.getFont().deriveFont(28.0f));
 		label.setHorizontalAlignment(JLabel.CENTER);
 		label.setVisible(true);
-		
+		label.setOpaque(true);
+		frame.add(label);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        
+	
 	}
 
-	
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -51,11 +54,16 @@ public class typingtutor implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-	currentLetter = generateRandomLetter();
-	label.setText(Character.toString(currentLetter));
-	if(equals(currentLetter)) {
-		System.out.println("correct");
-	}
+		if (e.getKeyChar() == (currentLetter)) {
+			System.out.println("correct");
+			label.setBackground(Color.GREEN);
+			//frame.repaint();
+		}
+		else{
+			label.setBackground(Color.red);
+		}
+		currentLetter = generateRandomLetter();
+		label.setText(Character.toString(currentLetter));
 	}
 
 }
