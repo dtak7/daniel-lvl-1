@@ -20,7 +20,7 @@ public class Backpack {
 		pack.putInBackpack(rule);
 		pack.goToSchool();
 		text.burn();
-		
+		rule.measure();
 	}
 	
 	public void putInBackpack(Supply supply){
