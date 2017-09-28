@@ -1,14 +1,17 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class WhackAMole {
+public class WhackAMole implements ActionListener {
 	private JFrame frame = new JFrame();
 	private JPanel panel = new JPanel();
 	private int num = 159;
-
+	JButton button;
+	JButton button2;
 	public static void main(String[] args) {
 		WhackAMole whack = new WhackAMole();
 		whack.drawButtons(whack.num);
@@ -28,22 +31,56 @@ public class WhackAMole {
 
 		int n = rand.nextInt(50) + 1;
 		for (int i = 0; i < num; i++) {
-			if(n==i){
-				JButton button2 = new JButton("mole!");
+			if (n == i) {
+				 button2 = new JButton("mole!");
+				button2.addActionListener(this);
 				panel.add(button2);
 			}
-			JButton button = new JButton();
+			 button = new JButton();
+			button.addActionListener(this);
 			panel.add(button);
 			
 		}
-
 	}
+
 	void speak(String words) {
 		try {
-		Runtime.getRuntime().exec("say " + words).waitFor();
+			Runtime.getRuntime().exec("say " + words).waitFor();
 		} catch (Exception e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}
-		}
+	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		Random insults = new Random();
+		int n = insults.nextInt(5) + 1;
+		if(e.getSource()==button2) {
+		System.out.println("good job");
+		frame.dispose();
+		
+		}
+		if(n==1) {
+			System.out.println("you're an imbicle");
+		}
+		else if(n==2) {
+			System.out.println("you're a misalacation of reasources");
+		}
+		else if(n==3) {
+			System.out.println("you dumbo");
+		}
+		else if(n==4) {
+			System.out.println("what a moron!");
+		}
+		else if(n==5) {
+			System.out.println("If you were twice as smart, you'd still be stupid.");
+		}
+		else {
+			System.out.println(n);
+		}
+		
+		
+	}
+	
 }
