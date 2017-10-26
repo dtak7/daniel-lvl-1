@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="Tortoise.jar"/>
 	<classpathentry kind="lib" path="/Users/league/Google Drive/league-jars/javazoom.jar"/>
+	<classpathentry kind="lib" path="gridworld.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
